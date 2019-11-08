@@ -1,0 +1,14 @@
+{
+  "name": "harmonia",
+  "private": true,
+  "dependencies": {
+    "bootstrap-growl-ifightcrime": "^1.1.0",
+    "fastclick": "^1.0.6",
+    "malihu-custom-scrollbar-plugin": "^3.1.5",
+    "nprogress": "^0.2.0"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "André Araujo <andreguia@hotmail.com>",
+  "license": "MIT"
+}

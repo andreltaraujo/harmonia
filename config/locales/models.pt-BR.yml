@@ -1,0 +1,90 @@
+'pt-BR':
+  activerecord:
+    models:
+      admin: 
+        one: Administrador
+        other: Administradores
+      user:
+        one: Usuário
+        other: Usuários
+      user_profile:
+        one: Perfil
+        other: Perfis
+      home_address:
+        one: Endereço Residencial
+        other: Endereços
+      business_address:
+        one: Endereço Comercial
+        other: Endereços
+      phone:
+        one: Telefone
+        other: Telefones
+      bank_datum:
+        one: Dados Bancários
+        other: Dados Bancários
+      contract:
+        one: Contrato
+        other: Contratos
+      dependent:
+        one: Dependente
+        other: Dependentes
+      representative:
+        one: Representante
+        other: Representantes     
+    attributes:
+      admin:
+        id: Código
+        email: e-mail
+        password: Senha
+        password_confirmation: Confirme a Senha
+        created_at: Criado em
+        updated_at: Atualizado em 
+      user:
+        id: Código
+        email: e-mail
+        first_name: Nome
+        last_name: Sobrenome
+        password: Senha
+        password_confirmation: Confirme a Senha
+        created_at: Criado em
+        updated_at: Atualizado em
+      user_profile:
+        id: Código
+        birthdate: Data de Nascimento
+        cpf: CPF
+        rg: RG
+        est_civil: Estado Civil
+        secretary: Secretaria
+        entity: Entidade
+      home_address:
+        street: Rua
+        number: Número
+        disctrict: Bairro
+        city: Cidade
+        state: Estado
+        cep: CEP
+      business_address:
+        street: Rua
+        number: Número
+        disctrict: Bairro
+        city: Cidade
+        state: Estado
+        cep: CEP
+      phones:
+        phone: Telefone
+      bank_data:
+        bank_name: Nome do Banco
+        bank_number: Número do Banco
+        agency_number: Número da Agência
+        account_number: Número da Conta
+      dependentes:
+        name: Nome Completo
+        birthdate: Data de Nascimento
+        kinship: Parentesco
+      contracts:
+        number: Número
+      representatives:
+        code: Código
+        cpf: CPF
+        first_name: Primeiro Nome
+        last_name: Sobrenome

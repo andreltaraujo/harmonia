@@ -1,0 +1,31 @@
+<div class="login_wrapper">
+  <section class="login_content">
+    <h1><%= image_tag('logo.png', size:"125x70") %> ABRASPESP</h1>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name),
+      class:"form-horizontal") do |f| %>
+      <h1 id="nome"><%= t('label.Associated Login') %></h1>
+      
+      <div class="form-group">
+        <%= f.email_field :email, autofocus: true, class:"form-control", placeholder:"Email", required:"" %>
+      </div>
+      <div class="form-group">
+        <%= f.password_field :password, class:"form-control", placeholder:"Password", required:"" %>
+      </div>
+      <div class="actions">
+        <%= f.submit t('label.Associated Login'), class:"btn btn-default submit" %>
+      </div>
+      <div class="clearfix"></div>
+      <div class="separator">
+        <p class="change_link">Não Associado?
+          <%= render "users/shared/links" %>
+        </p>
+      <div class="clearfix"></div>
+      <div>
+        <p>Grupo Harmonia Administradora de Benefícios</p>
+        <p>©2019 All Rights Reserved</p>
+      </div>
+    <% end %>
+    </div>
+  </section>
+</div>
+
