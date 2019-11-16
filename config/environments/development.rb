@@ -1,10 +1,14 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
-  # i18n Config
-  config.i18n.available_locales = ['pt-BR', :en]
-  config.i18n.default_locale = 'pt-BR'
   
+  # Rack CORS Config
+  config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins '*'
+      resource '*', headers: :any, methods: [:get, :post, :options]
+    end
+  end
+
   # Webconsole config
   config.web_console.whitelisted_ips = '10.0.2.2'
   

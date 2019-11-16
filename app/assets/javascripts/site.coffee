@@ -5,3 +5,4 @@
 //= require jquery.min
 //= require bootstrap-3.2.0/js/bootstrap.min
 //= require scrollingcarousel.2.0.min
+//= require bootstrap-growl-ifightcrime/jquery.bootstrap-growl.min

@@ -1,0 +1,208 @@
+<div class="col-md-12 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2><%= t('headers.registering') %> <%= @user.model_name.human %><small>Para concluir a associação, complete o formulário e prossiga para o pagamento da adesão.</small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+        <li><a class="collapse-link">Nº Contrato: <%= @user.contract.number %></a></li>
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li> 
+        </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content" style="display: block;">
+      <br>
+      <% if @user.errors.any? %>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li>
+                <strong><%= message %></strong>
+              </li>
+            <% end %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close",
+            style="position: relative; top: -30px;"><span aria-hidden="true">&times;</span>
+            </button>
+          </ul>
+        </div>
+      <% end %> 
+      <%= form_with(url: backoffice_users_welcome_path, model: @user, local: true,
+        class: "form-horizontal form-label-left input_mask") do |form| %>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+          <%= form.text_field :first_name, id:"first_name", class:"form-control has-feedback-left",
+          readonly:"true" %>
+          <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+          <%= form.text_field :last_name, id:"last_name", class:"form-control", readonly:"true" %>
+          <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+          <%= form.email_field :email, id:"email", class:"form-control has-feedback-left",
+          readonly:"true" %>
+          <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+        </div>
+        <div class="form-group">
+          <%= form.fields_for :user_profile do |profile_form| %>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= profile_form.text_field :cpf, id:"cpf", class:"form-control", placeholder:"CPF" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= profile_form.text_field :rg, id:"rg", class:"form-control", placeholder:"RG" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= profile_form.date_field :birthdate, id:"birthdate", class:"form-control", placeholder:"Birthdate" %>
+                <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= profile_form.text_field :mar_status, id:"mar_status", class:"form-control", placeholder:"Estado Civil" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= profile_form.text_field :secretary, id:"secretary", class:"form-control", placeholder:"Secretaria" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= profile_form.text_field :entity, id:"entity", class:"form-control", placeholder:"Entidade" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= form.fields_for :home_address do |home_address_form| %>
+            <%= home_address_form.label :home_address, class:"control-label col-md-2 col-sm-2 col-xs-12" %>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= home_address_form.text_field :street, id:"home_street", class:"form-control", placeholder:"Street" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12 form-group has-feedback">
+              <%= home_address_form.text_field :number, id:"home_number", class:"form-control", placeholder:"Number" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= home_address_form.text_field :district, id:"home_district", class:"form-control", placeholder:"Disctrict" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <%= home_address_form.label :" ", class:"control-label col-md-2 col-sm-2 col-xs-12" %>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= home_address_form.text_field :city, id:"home_city", class:"form-control", placeholder:"City" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+              <%= home_address_form.text_field :state, id:"home_state", class:"form-control", placeholder:"State" %>
+              <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+              <%= home_address_form.text_field :cep, id:"home_cep", class:"form-control", placeholder:"CEP" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= form.fields_for :phones do |phones_form| %>
+            <%= phones_form.label :phone_number, class:"control-label col-md-2 col-sm-2 col-xs-12" %>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= phones_form.text_field :phone_number, id:"phone", class:"form-control", placeholder:"Home/Mobile Phone" %>
+              <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= form.fields_for :business_address do |business_address_form| %>
+            <%= business_address_form.label :business_address, class:"control-label col-md-2 col-sm-2 col-xs-12" %>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= business_address_form.text_field :street, id:"business_street", class:"form-control", placeholder:"Street" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+          
+            <div class="col-md-2 col-sm-2 col-xs-12 form-group has-feedback">
+              <%= business_address_form.text_field :number, id:"business_number", class:"form-control", placeholder:"Number" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= business_address_form.text_field :district, id:"business_district", class:"form-control", placeholder:"Disctrict" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <%= business_address_form.label :" ", class:"control-label col-md-2 col-sm-2 col-xs-12" %>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= business_address_form.text_field :city, id:"business_city", class:"form-control", placeholder:"City" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+              <%= business_address_form.text_field :state, id:"business_state", class:"form-control", placeholder:"State" %>
+              <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+              <%= business_address_form.text_field :cep, id:"business_cep", class:"form-control", placeholder:"CEP" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= form.fields_for :phones do |phones_form| %>
+            <%= phones_form.label :phone_number, class:"control-label col-md-2 col-sm-2 col-xs-12" %>
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+              <%= phones_form.text_field :phone_number, id:"phone", class:"form-control", placeholder:"Business Phone" %>
+              <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= form.fields_for :bank_info do |bank_info_form| %>            
+            <%= bank_info_form.label :bank_info, class:"control-label col-md-2 col-sm-2 col-xs-12" %>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+              <%= bank_info_form.text_field :bank_name, id:"bank_name", class:"form-control", placeholder:"Bank  Name" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12 form-group has-feedback">
+              <%= bank_info_form.text_field :bank_number, id:"bank_number", class:"form-control", placeholder:"Bank Number" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12 form-group has-feedback">
+              <%= bank_info_form.text_field :agency_number, id:"agency_number", class:"form-control", placeholder:"Agency Number" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+              <%= bank_info_form.text_field :account_number, id:"account_number", class:"form-control", placeholder:"Account Number" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+            <%= bank_info_form.label :debit_date, class:"control-label col-md-2 col-sm-2 col-xs-12" %>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+              <%= bank_info_form.date_field :debit_date, id:"debit_date", class:"form-control", placeholder:"Debit Date" %>
+                <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="form-group" id="dependents">
+          <%= form.fields_for :dependents do |dependent| %>
+            <%= render partial: "dependent_fields", locals: { f: dependent } %>
+          <% end %>
+          <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+            <%= link_to_add_association 'Incluir Dependentes', form, :dependents, class:"btn btn-success btn-xs" %>
+          </div>
+        </div>
+        
+        <div class="ln_solid"></div>  
+        <div class="form-group">
+          <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-5">
+            <%= link_to 'Cancel', backoffice_users_profile_index_path, class:"btn btn-primary" %>
+            <button class="btn btn-primary" type="reset">Reset</button>
+            <% if @user.contract.available? %>
+              <button type="submit" class="btn btn-success">Prosseguir</button>
+            <% else %>
+              <%= link_to t("#{@user.contract.status}"), backoffice_users_profile_index_path,
+                class:"btn btn-success" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+          

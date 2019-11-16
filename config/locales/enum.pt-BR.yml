@@ -1,0 +1,27 @@
+'pt-BR':
+  enums:
+    admin:
+      role:
+        full_access: Acesso Completo
+        restricted_access: Acesso Restrito
+    order:
+      status: 
+        requested: Requisitado
+        waiting: Aguardando pagamento
+        analysing: Em análise
+        paid: Pago
+        available: Disponível
+        dispute: Em disputa
+        returned: Devolvido
+        canceled: Cancelado
+        debited: Debitado
+        temporary_retention: Retenção Temporaria
+    contract:
+      status:
+        available: Disponível
+        processing: Processando
+        paid: Pago
+        active: Ativo
+        defaulting: Inadimplente
+        suspended: Suspenso
+        inactive: Inativo

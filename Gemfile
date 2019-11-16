@@ -39,6 +39,8 @@ gem 'devise'
 gem 'rails-i18n', '~> 5.1'
 gem 'tty-spinner'
 gem 'cocoon'
+gem 'money-rails', '~> 1.12'
+gem 'pagseguro-oficial', '~> 2.5.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -52,6 +54,7 @@ group :development do
   gem 'faker'
   gem 'awesome_print'
   gem 'rails_db', '2.0.4'
+  gem 'rack-cors'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'

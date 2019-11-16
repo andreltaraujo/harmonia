@@ -1,0 +1,18 @@
+<div class="nested-fields">
+  <%= f.label :dependent, class:"control-label col-md-2 col-sm-2 col-xs-12" %>
+    <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+      <%= f.text_field :name, id:"dependent_name", class:"form-control", placeholder:"Dependent Name" %>
+        <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+      <%= f.date_field :birthdate, id:"dependent_birthdate", class:"form-control", placeholder:"Dependent Birhtdate" %>
+        <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+      <%= f.text_field :kinship, id:"kindship", class:"form-control", placeholder:"Kinship" %>
+        <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
+    </div>
+    <div class="col-md-1 col-sm-1 col-xs-12">
+      <%= link_to_remove_association('Remover', f, class:"btn btn-primary btn-xs") %>
+    </div>
+  </div>

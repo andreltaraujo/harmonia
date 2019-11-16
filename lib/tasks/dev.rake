@@ -9,6 +9,7 @@ namespace :dev do
       show_spinner("Criando DB...") { %x(rails db:create) }
       show_spinner("Migrando DB...") { %x(rails db:migrate) } 
       show_spinner("Cadastrando ADMIN padrão...") { %x(rails dev:add_default_admin) }
+      show_spinner("Gera contrato...") { %x(rails dev:generate_contract) }
       show_spinner("Cadastrando USER padrão...") { %x(rails dev:add_default_user) }
       show_spinner("Cadastrando outros USERS...") { %x(rails dev:add_others_users) }
       show_spinner("Cadastrando Telefones...") { %x(rails dev:add_phones_users) }
@@ -17,7 +18,7 @@ namespace :dev do
       show_spinner("Cadastrando Endereço Coml...") { %x(rails dev:add_business_address) }
       show_spinner("Cadastrando Dados Bancários...") { %x(rails dev:add_bank_infos) }
       show_spinner("Cadastrando Dependentes...") { %x(rails dev:add_dependents) }
-      show_spinner("Gerando números de contrato...") { %x(rails dev:generate_contracts) }
+      show_spinner("Cadstrando representantes...") { %x(rails dev:add_representatives) }
     else
       puts "Você não está no ambiente do desenvolvimento!"
     end
@@ -31,6 +32,15 @@ namespace :dev do
         password_confirmation: DEFAULT_PASSWORD
         )
     end
+  
+    desc "Inicia número de contrato"
+      task generate_contract: :environment do 
+        Contract.create!(
+          event: "New Contract",  
+          contract_date: Date.today,
+          price: "154,00"
+        )
+      end
 
   desc "Adiciona o usuário padrão"
     task add_default_user: :environment do
@@ -39,7 +49,8 @@ namespace :dev do
       first_name: "André",
       last_name: "Araujo",
       password: DEFAULT_PASSWORD,
-      password_confirmation: DEFAULT_PASSWORD
+      password_confirmation: DEFAULT_PASSWORD,
+      contract: Contract.first
       )
     end
 
@@ -56,12 +67,15 @@ namespace :dev do
       end
     end
 
-  desc "Gera contratos"
-    task generate_contracts: :environment do
-      11.times do |i| 
-        Contract.create!(
-          number: Faker::Number.number(digits: 4),
-          user: User.all.sample
+  desc "Cadastra representantes"
+    task add_representatives: :environment do
+      5.times do |r|
+        Representative.create!(
+          first_name: Faker::Name.first_name,
+          last_name: Faker::Name.last_name,
+          code: Faker::Number.number(digits: 4), 
+          cpf: Faker::IDNumber.brazilian_citizen_number(formatted: true),
+          rg: Faker::IDNumber.brazilian_id(formatted: true)
         )
       end
     end
@@ -132,6 +146,7 @@ namespace :dev do
           bank_number: Faker::Number.number(digits: 3) ,
           agency_number: Faker::Number.number(digits: 5),
           account_number: Faker::Bank.account_number,
+          debit_date: Faker::Date.forward(days: 30),
           user: use
         )
       end

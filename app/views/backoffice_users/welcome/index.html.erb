@@ -1,261 +1,158 @@
-           
-    
-            
+<div class="clearfix"></div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Pagamento:<small>Confira seus dados e efetue o pagamento para concluir seu processo de associação.</small></h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link">Contrato Nº <%= @user.contract.number %></a></li>
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <section class="content invoice">
+            <!-- title row -->
+            <div class="row">
+              <div class="col-xs-12 invoice-header">
+                <h1>
+                  <i><%= image_tag('logo.png', size:"62x35") %></i> <%= t('label.Invoice') %>
+                  <small class="pull-right"><%= t('label.Date')%>:<%= l Date.today %></small>
+                </h1>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row invoice-info">
+              <div class="col-sm-4 invoice-col">
+                De
+                <address>
+                  <strong>Harmonia Administradora de Benefícios S/S LTDA.</strong>
+                  <br>R. Frei Antônio de Pádua, 1020 - Guanabara
+                  <br>Campinas / SP - CEP: 13.073-330
+                  <br>Phone: (11) 94969-0036
+                  <br>Email: andre@abraspesp.com.br
+                </address>
+              </div>
+              <!-- /.col -->
+              <div class="col-sm-4 invoice-col">
+                To
+                <address>
+                  <strong><%= @user.full_name %></strong>
+                  <br>R. <%= @user.home_address.street %>, <%= @user.home_address.number%>
+                  -  <%= @user.home_address.district %>
+                  <br><%= @user.home_address.city %> / <%= @user.home_address.state %>
+                  - <%= @user.home_address.cep %>
+                  <br>Phone: <%= @user.phones.first.phone_number%>
+                  <br>Email: <%= @user.email %>
+                </address>
+              </div>
+              <!-- /.col -->
+              <div class="col-sm-4 invoice-col">
+                <b><%= t('label.Invoice') %> #007612</b>
+                <br>
+                <br>
+                <b>Order ID:</b><#% @user.order.id %>
+                <br>
+                <b>Payment Due:</b> 2/22/2014
+                <br>
+                <b>Account:</b> 968-34567
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- Table row -->
+            <div class="row">
+              <div class="col-xs-12 table">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th><%= t('label.Qty') %></th>
+                      <th><%= t('label.Product') %></th>
+                      <th>Nº <%= t('label.Serial') %></th>
+                      <th style="width: 59%"><%= t('label.Description') %></th>
+                      <th>Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Adesão</td>
+                      <td><%= @user.contract.number %></td>
+                      <td>Taxa Administrativa</td>
+                      <td>R$ 95,00</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Mensalidade</td>
+                      <td><%= @user.contract.number %></td>
+                      <td>Primeira Mensalidade</td>
+                      <td>R$ 59,00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
 
             <div class="row">
-              <div class="col-md-12 col-sm-12 ">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>User Profile <small>User dashboard</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <div class="col-md-3 col-sm-3  profile_left">
-                      <div class="profile_img">
-                        <div id="crop-avatar">
-                          <!-- Current avatar -->
-                          <%= image_tag 'picture.webp', class:'img-responsive avatar-view' %>
-                        </div>
-                      </div>
-                      <h3>Samuel Doe</h3>
-
-                      <ul class="list-unstyled user_data">
-                        <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
-                        </li>
-
-                        <li>
-                          <i class="fa fa-briefcase user-profile-icon"></i> Software Engineer
-                        </li>
-
-                        <li class="m-top-xs">
-                          <i class="fa fa-external-link user-profile-icon"></i>
-                          <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
-                        </li>
-                      </ul>
-
-                      <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
-                      <br />
-
-                      <!-- start skills -->
-                      <h4>Skills</h4>
-                      <ul class="list-unstyled user_data">
-                        <li>
-                          <p>Web Applications</p>
-                          <div class="progress progress_sm">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                          </div>
-                        </li>
-                        <li>
-                          <p>Website Design</p>
-                          <div class="progress progress_sm">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="70"></div>
-                          </div>
-                        </li>
-                        <li>
-                          <p>Automation & Testing</p>
-                          <div class="progress progress_sm">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="30"></div>
-                          </div>
-                        </li>
-                        <li>
-                          <p>UI / UX</p>
-                          <div class="progress progress_sm">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                          </div>
-                        </li>
-                      </ul>
-                      <!-- end of skills -->
-                    </div>
-                    <div class="col-md-9 col-sm-9 ">
-
-                      <div class="profile_title">
-                        <div class="col-md-6">
-                          <h2>Dados dos Usuario -Sessões</h2>
-                        </div>
-                      </div>
-                     
-
-                      <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Dados Pessoais</a>
-                          </li>
-                          <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Endereços</a>
-                          </li>
-                          <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Dados Bancários</a>
-                          </li>
-                          <li role="presentation" class=""><a href="#tab_content4" role="tab" id="profile-tab3" data-toggle="tab" aria-expanded="false">Dependentes</a>
-                          </li>
-                        </ul>
-                        
-                        <div id="myTabContent" class="tab-content">
-                          <div role="tabpanel" class="tab-pane active " id="tab_content1" aria-labelledby="home-tab">
-
-                            <!-- start recent activity -->
-                            <ul class="messages">
-                              <li>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">Nascimento</h4>
-                                  <blockquote class="message">23/03/1989</blockquote>
-                                  <br />
-                                </div>
-                              </li>
-                              <li>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">CPF</h4>
-                                  <blockquote class="message">123.456.789-00</blockquote>
-                                  <br />
-                                </div>
-                              </li>
-                              <li>  
-                                <div class="message_wrapper">
-                                  <h4 class="heading">RG</h4>
-                                  <blockquote class="message">12.345.678-9</blockquote>
-                                  <br />
-                                </div>
-                              </li>
-                              <li>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">Marital Status</h4>
-                                  <blockquote class="message">Solteiro</blockquote>
-                                  <br />
-                                </div>
-                              </li>
-                              <li>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">Secretaria / Entidade</h4>
-                                  <blockquote class="message">Educação / Escola</blockquote>
-                                  <br />
-                                </div>
-                              </li>
-                            </ul>
-                            <!-- end recent activity -->
-                          </div>
-                          
-                          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-                            <ul class="messages">
-                              <li>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">Home Address</h4>
-                                  <blockquote class="message">Av. Moisés Gadia, 179 - Jardim do Lago - CAMPINAS / SP</blockquote>
-                                  <br />
-                                </div>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">Home Phone / Cel Phone</h4>
-                                  <blockquote class="message">(19) 3324-6213 / (11) 94969-0036</blockquote>
-                                  <br />
-                                </div>
-                              </li>
-                              <li>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">Business Address</h4>
-                                  <blockquote class="message">Av. Moisés Gadia, 179 - Jardim do Lago - CAMPINAS / SP</blockquote>
-                                  <br />
-                                </div>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">Business Phone</h4>
-                                  <blockquote class="message">(19) 3213-3324</blockquote>
-                                  <br />
-                                </div>
-                              </li>
-                            </ul>
-                            
-                          </div>
-                          <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
-                            <ul class="messages">
-                              <li>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">Informações Bancárias</h4>
-                                  <blockquote class="message">Banco do Brasil - 001 - Agência: 1844-9 - C/C 18.577-9</blockquote>
-                                  <br />
-                                </div>
-                              </li>
-                              </ul>
-                          </div>
-
-                          <!-- start dependents -->
-                            <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
-                            <table class="data table table-striped no-margin">
-                              <thead>
-                                <tr>
-                                  <th>#</th>
-                                  <th>Dependent Name</th>
-                                  <th>Birthdate</th>
-                                  <th class="hidden-phone">Age</th>
-                                  <th>Kindship</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>New Company Takeover Review</td>
-                                  <td>Deveint Inc</td>
-                                  <td class="hidden-phone">18</td>
-                                  <td class="vertical-align-mid">
-                                    <div class="progress">
-                                      <div class="progress-bar progress-bar-success" data-transitiongoal="35"></div>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>2</td>
-                                  <td>New Partner Contracts Consultanci</td>
-                                  <td>Deveint Inc</td>
-                                  <td class="hidden-phone">13</td>
-                                  <td class="vertical-align-mid">
-                                    <div class="progress">
-                                      <div class="progress-bar progress-bar-danger" data-transitiongoal="15"></div>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>3</td>
-                                  <td>Partners and Inverstors report</td>
-                                  <td>Deveint Inc</td>
-                                  <td class="hidden-phone">30</td>
-                                  <td class="vertical-align-mid">
-                                    <div class="progress">
-                                      <div class="progress-bar progress-bar-success" data-transitiongoal="45"></div>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>4</td>
-                                  <td>New Company Takeover Review</td>
-                                  <td>Deveint Inc</td>
-                                  <td class="hidden-phone">28</td>
-                                  <td class="vertical-align-mid">
-                                    <div class="progress">
-                                      <div class="progress-bar progress-bar-success" data-transitiongoal="75"></div>
-                                    </div>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <!-- end user projects -->
-
-                            
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <!-- accepted payments column -->
+              <div class="col-xs-6">
+                <p class="lead"><%= t('label.Payment Methods') %></p>
+                <%= image_tag 'visa.png' %>
+                <%= image_tag 'mastercard.png' %>
+                <%= image_tag 'american.png' %>
+                <%= image_tag 'paypal.png' %>
+                <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                  Aceitamos estas formas de pagamento.
+                </p>
+              </div>
+              <!-- /.col -->
+              <div class="col-xs-6">
+                <p class="lead"><%= t('label.Amount due') %>, <%= l Date.today %></p>
+                <div class="table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <th style="width:50%">Subtotal:</th>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th>Tax (4,98%)</th>
+                        <td>R$ 7.70</td>
+                      </tr>
+                      <tr>
+                        <th>Total:</th>
+                        <td><%= @user.contract.price %></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
+              <!-- /.col -->
             </div>
-          </div>
+            <!-- /.row -->
+            <!-- this row will not appear when printing -->
+            <div class="row no-print">
+              <div class=" ">
+                <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                <button class="btn btn-primary" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+                <% if @user.contract.available? %>
+                  <%= form_tag(checkout_payments_path) do %>
+                    <%= hidden_field_tag :contract_id, @user.contract.id %>
+                      <%= button_tag(type: "submit", class:"btn btn-success pull-right") do %>
+                        <i class="fa fa-credit-card" style="margin-right: 5px;"></i><%= t('label.Submit Payment') %>
+                      <% end %>
+                  <% end %>
+                  <% else %>
+                  <%= link_to "#{@user.contract.status}", backoffice_users_profile_index_path, class:"btn btn-primary" %>
+                <% end %>
+              </div>
+            </div>
+          </section>
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
       </div>
     </div>
+  </div>

@@ -1,4 +1,4 @@
-'pt-BR':
+"pt-BR":
   activerecord:
     models:
       admin: 
@@ -8,8 +8,8 @@
         one: Usuário
         other: Usuários
       user_profile:
-        one: Perfil
-        other: Perfis
+        one: Perfil do Usuário
+        other: Dados Pessoais
       home_address:
         one: Endereço Residencial
         other: Endereços
@@ -19,7 +19,7 @@
       phone:
         one: Telefone
         other: Telefones
-      bank_datum:
+      bank_info:
         one: Dados Bancários
         other: Dados Bancários
       contract:
@@ -53,7 +53,7 @@
         birthdate: Data de Nascimento
         cpf: CPF
         rg: RG
-        est_civil: Estado Civil
+        mar_status: Estado Civil
         secretary: Secretaria
         entity: Entidade
       home_address:
@@ -72,19 +72,24 @@
         cep: CEP
       phones:
         phone: Telefone
-      bank_data:
+      bank_info:
         bank_name: Nome do Banco
         bank_number: Número do Banco
         agency_number: Número da Agência
         account_number: Número da Conta
-      dependentes:
+      dependent:
         name: Nome Completo
         birthdate: Data de Nascimento
         kinship: Parentesco
-      contracts:
+      contract:
         number: Número
-      representatives:
+        status: Status
+        contract_date: Data do Contrato
+        user: Usuário
+        representative: Representante
+      representative:
         code: Código
         cpf: CPF
+        rg: RG
         first_name: Primeiro Nome
         last_name: Sobrenome

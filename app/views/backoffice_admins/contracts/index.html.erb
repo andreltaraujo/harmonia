@@ -1,0 +1,48 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary"><%= @contracts.model_name.human(count: 2) %></h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th><%= @contracts.human_attribute_name("id")%></th>
+              <th><%= @contracts.human_attribute_name("user")%></th>
+              <th><%= @contracts.human_attribute_name("number")%></th>
+              <th><%= @contracts.human_attribute_name("contract_date")%></th>
+              <th><%= @contracts.human_attribute_name("status")%></th>
+              <th><%= @contracts.human_attribute_name("representative")%></th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th><%= @contracts.human_attribute_name("id")%></th>
+              <th><%= @contracts.human_attribute_name("user")%></th>
+              <th><%= @contracts.human_attribute_name("number")%></th>
+              <th><%= @contracts.human_attribute_name("contract_date")%></th>
+              <th><%= @contracts.human_attribute_name("status")%></th>
+              <th><%= @contracts.human_attribute_name("representative")%></th>
+            </tr>
+          </tfoot>
+          <tbody>
+            <% @contracts.each do |contract| %>
+            <tr>
+              <td><%= contract.id %></td>
+              <td><%= contract.user.full_name %></td>
+              <td><%= contract.number %></td>
+              <td><%= contract.contract_date %></td>
+              <td><%= contract.status %></td>
+              <td><%= contract.representative %></td>
+            </tr>
+            <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

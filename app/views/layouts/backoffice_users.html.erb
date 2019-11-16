@@ -8,6 +8,7 @@
     <title>HARMONIA - USER</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <%= stylesheet_link_tag 'application', 'backoffice_users' %>
   </head>
 
@@ -37,17 +38,20 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><%= link_to new_backoffice_users_profile_path do %>
+                <% if controller_name == "welcome" %>
+                  <li><%= link_to backoffice_users_welcome_path do %>
                     <i class="fa fa-tachometer"></i>Associar-se
                   <% end %>
-                  </li>
-                  <li><%= link_to backoffice_users_welcome_index_path do %>
-                    <i class="fa fa-tachometer"></i><%= t('label.Dashboard') %>
+                <% else %>
+                  <li><%= link_to backoffice_users_profile_index_path do %>
+                    <i class="fa fa-tachometer"></i><%= t('label.UserDashboard') %>
                   <% end %>
                   </li>
-                  <li><%= link_to "#" do %>
+                  </li>
+                  <li><%= link_to backoffice_users_profile_path do %>
                     <i class="fa fa-edit"></i><%= t('label.Edit') %> <%= t('label.Profile') %>
-                  <% end %>              
+                  <% end %>
+                <% end %>              
               </div>  
             </div>
             <!-- /sidebar menu -->

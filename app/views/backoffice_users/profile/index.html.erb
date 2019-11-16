@@ -1,0 +1,202 @@
+<div class="row">
+  <div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2><%= @user.user_profile.model_name.human(count: 1) %> - <%= @user.contract.model_name.human(count: 1) %> Nº: 
+         <%= @user.contract.number %> - Status: <%= t(@user.contract.status) %></h2><small></small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <% if @user.errors.any? %>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li>
+                <strong><%= message %></strong>
+              </li>
+            <% end %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close",
+            style="position: relative; top: -30px;"><span aria-hidden="true">&times;</span>
+            </button>
+          </ul>
+        </div>
+      <% end %>
+      <div class="x_content">
+        <div class="col-md-3 col-sm-3  profile_left">
+          <div class="profile_img">
+            <div id="crop-avatar">
+              <!-- Current avatar -->
+              <%= image_tag 'picture.webp', class:'img-responsive avatar-view' %>
+            </div>
+          </div>
+          <h3><%= @user.full_name %></h3>
+          <ul class="list-unstyled user_data">
+            <li><i class="fa fa-map-marker user-profile-icon"></i>
+              <%= @user.home_address.city %> - <%= @user.home_address.state %> 
+            </li>
+          </ul>
+          <div class=" ">
+            <% if @user.contract.available? %>
+              <%= link_to backoffice_users_welcome_index_path, class:"btn btn-success" do %>
+                <i class="fa fa-edit m-right-xs"></i>
+                <%= t('label.Signup') %>
+              <% end %>
+            <% else %>
+              <%= link_to backoffice_users_profile_path, class:"btn btn-success" do %>
+                <i class="fa fa-edit m-right-xs"></i>
+                <%= t('label.Edit') %> <%= t('label.Profile') %>
+              <% end %><br />
+            <% end %>
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-9 ">
+          <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab"
+               data-toggle="tab" aria-expanded="true"><%= @user.user_profile.model_name.human(count: 2) %></a>
+              </li>
+              <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab"
+               data-toggle="tab" aria-expanded="false"><%= @user.home_address.model_name.human(count: 2) %></a>
+              </li>
+              <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2"
+               data-toggle="tab" aria-expanded="false"><%= @user.bank_info.model_name.human(count: 2) %></a>
+              </li>
+              <li role="presentation" class=""><a href="#tab_content4" role="tab" id="profile-tab3"
+               data-toggle="tab" aria-expanded="false"><%= @user.dependents.model_name.human(count: 2) %></a>
+              </li>
+            </ul>
+            
+            <div id="myTabContent" class="tab-content">
+              <div role="tabpanel" class="tab-pane active " id="tab_content1" aria-labelledby="home-tab">
+                <!-- start recent activity -->
+                <ul class="messages">
+                  <li>
+                    <div class="message_wrapper">
+                      <h4 class="heading">Nascimento</h4>
+                      <blockquote class="message"><%= l(@user.user_profile.birthdate) %></blockquote>
+                      <br />
+                    </div>
+                  </li>
+                  <li>
+                    <div class="message_wrapper">
+                      <h4 class="heading">CPF</h4>
+                      <blockquote class="message"><%= @user.user_profile.cpf %></blockquote>
+                      <br />
+                    </div>
+                  </li>
+                  <li>  
+                    <div class="message_wrapper">
+                      <h4 class="heading">RG</h4>
+                      <blockquote class="message"><%= @user.user_profile.rg %></blockquote>
+                      <br />
+                    </div>
+                  </li>
+                  <li>
+                    <div class="message_wrapper">
+                      <h4 class="heading">Marital Status</h4>
+                      <blockquote class="message"><%= @user.user_profile.mar_status %></blockquote>
+                      <br />
+                    </div>
+                  </li>
+                  <li>
+                    <div class="message_wrapper">
+                      <h4 class="heading">Secretaria / Entidade</h4>
+                      <blockquote class="message"><%= @user.user_profile.secretary %> / <%= @user.user_profile.entity %></blockquote>
+                      <br />
+                    </div>
+                  </li>
+                </ul>
+                <!-- end recent activity -->
+              </div>
+              
+              <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                <ul class="messages">
+                  <li>
+                    <div class="message_wrapper">
+                      <h4 class="heading">Home Address</h4>
+                      <blockquote class="message">
+                        <%= @user.home_address.street %>, <%= @user.home_address.number %> - 
+                        <%= @user.home_address.district %> - <%= @user.home_address.city %> / 
+                        <%= @user.home_address.state %> - <%= @user.home_address.cep %>
+                      </blockquote>
+                      <br />
+                    </div>
+                    <div class="message_wrapper">
+                      <h4 class="heading">Home/Mobile Phone</h4>
+                      <blockquote class="message"><%= @user.phones.first.phone_number %></blockquote>
+                      <br />
+                    </div>
+                  </li>
+                  <li>
+                    <div class="message_wrapper">
+                      <h4 class="heading">Business Address</h4>
+                      <blockquote class="message">
+                        <%= @user.business_address.street %>, <%= @user.business_address.number %> - 
+                        <%= @user.business_address.district %> - <%= @user.business_address.city %> / 
+                        <%= @user.business_address.state %> - <%= @user.business_address.cep %>
+                      </blockquote>
+                      <br />
+                    </div>
+                    <div class="message_wrapper">
+                      <h4 class="heading">Business Phone</h4>
+                      <blockquote class="message"><%= @user.phones.last.phone_number %></blockquote>
+                      <br />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                <ul class="messages">
+                  <li>
+                    <div class="message_wrapper">
+                      <h4 class="heading">Informações Bancárias</h4>
+                      <blockquote class="message">
+                        <%= @user.bank_info.bank_name %> - <%= @user.bank_info.bank_number %> - 
+                        <%= @user.bank_info.agency_number %> - <%= @user.bank_info.account_number %>
+                      </blockquote>
+                      <br />
+                    </div>
+                    <div class="message_wrapper">
+                      <h4 class="heading">Debit Date</h4>
+                      <blockquote class="message"><%= @user.bank_info.debit_date %></blockquote>
+                      <br />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- start dependents -->
+              <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
+                <table class="data table table-striped no-margin">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th><%= @user.dependents.human_attribute_name("name")%></th>
+                      <th><%= @user.dependents.human_attribute_name("birthdate")%></th>
+                      <th class="hidden-phone">Age</th>
+                      <th><%= @user.dependents.human_attribute_name("kinship")%></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @user.dependents.each do |depend| %>
+                    <tr>
+                      <td><%= depend.id %></td>
+                      <td><%= depend.name %></td>
+                      <td><%= l(depend.birthdate) %></td>
+                      <td class="hidden-phone">18</td>
+                      <td><%= depend.kinship %></td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <!-- end dependents -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

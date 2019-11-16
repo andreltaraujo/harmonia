@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_08_124646) do
+ActiveRecord::Schema.define(version: 2019_11_15_141321) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -51,13 +51,14 @@ ActiveRecord::Schema.define(version: 2019_11_08_124646) do
 
   create_table "contracts", force: :cascade do |t|
     t.string "event"
-    t.string "number"
+    t.string "number", default: "2000"
     t.integer "status", default: 0
     t.date "contract_date"
     t.integer "user_id"
     t.integer "representative_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 154
     t.index ["representative_id"], name: "index_contracts_on_representative_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
   end
@@ -85,6 +86,16 @@ ActiveRecord::Schema.define(version: 2019_11_08_124646) do
     t.index ["user_id"], name: "index_home_addresses_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "contract_id"
+    t.integer "status", default: 0
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contract_id"], name: "index_orders_on_contract_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "phones", force: :cascade do |t|
     t.string "phone_type"
     t.string "phone_number"
@@ -102,6 +113,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_124646) do
     t.string "rg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "contracts_count"
   end
 
   create_table "user_profiles", force: :cascade do |t|
