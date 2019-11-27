@@ -21,7 +21,7 @@
         other: Telefones
       bank_info:
         one: Dados Bancários
-        other: Dados Bancários
+        other: Informações Bancárias
       contract:
         one: Contrato
         other: Contratos
@@ -44,6 +44,7 @@
         email: e-mail
         first_name: Nome
         last_name: Sobrenome
+        full_name: Nome Completo
         password: Senha
         password_confirmation: Confirme a Senha
         created_at: Criado em
@@ -59,37 +60,41 @@
       home_address:
         street: Rua
         number: Número
-        disctrict: Bairro
+        district: Bairro
         city: Cidade
         state: Estado
         cep: CEP
       business_address:
         street: Rua
         number: Número
-        disctrict: Bairro
+        district: Bairro
         city: Cidade
         state: Estado
         cep: CEP
-      phones:
-        phone: Telefone
       bank_info:
         bank_name: Nome do Banco
         bank_number: Número do Banco
         agency_number: Número da Agência
         account_number: Número da Conta
+        debit_date: Data Débito Automático
+      contract:
+        id: ID
+        number: Número
+        contract_date: Data do Contrato
+        user: Usuário
+        representative: Representante
+      phone:
+        phone_type: Tipo Telefone
+        phone_number: Telefone
       dependent:
         name: Nome Completo
         birthdate: Data de Nascimento
         kinship: Parentesco
-      contract:
-        number: Número
-        status: Status
-        contract_date: Data do Contrato
-        user: Usuário
-        representative: Representante
       representative:
         code: Código
         cpf: CPF
         rg: RG
         first_name: Primeiro Nome
         last_name: Sobrenome
+        full_name: Nome Completo
+        contracts_count: Qtde Contratos

@@ -40,19 +40,24 @@
         </li>
         <li class="nav-item">
           <%= link_to backoffice_admins_admins_index_path, class:"nav-link" do %>
-            <i class="fas fa-users"></i><span><%= t('label.DashboardAdm') %></span>
+            <i class="fas fa-users-cog"></i><span><%= t('label.DashboardAdms') %></span>
           <% end %>                                 
         </li>
         <li class="nav-item">
           <%= link_to backoffice_admins_rep_index_path, class:"nav-link" do %>
-            <i class="fas fa-list-alt"></i></i><span><%= t('label.DashboardRep') %></span>
+            <i class="fas fa-user-shield"></i></i><span><%= t('label.DashboardReps') %></span>
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "#", class:"nav-link" do %>
-            <i class="far fa-question-circle"></i><span>Perguntas</span>
+          <%= link_to backoffice_admins_contracts_index_path, class:"nav-link" do %>
+            <i class="fas fa-file-contract"></i><span><%= t('label.DashboardContracts') %></span>
           <% end %>
         </li>
+        <li class="nav-item">
+          <%= link_to backoffice_admins_users_index_path, class:"nav-link" do %>
+            <i class="fas fa-users"></i><span><%= t('label.DashboardUsers') %></span>
+          <% end %>
+        </li>	
         <!-- Divider -->
         <hr class="sidebar-divider">
         <!-- Sidebar Toggler (Sidebar) -->

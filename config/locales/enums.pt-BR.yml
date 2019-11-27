@@ -1,11 +1,20 @@
 'pt-BR':
   enums:
+    contract:
+      status:
+        available: Disponível
+        processing: Em Processamento
+        paid: Pago
+        active: Ativo
+        defaulting: Inadimplente
+        suspended: Suspenso
+        inactive: Inativo
     admin:
       role:
         full_access: Acesso Completo
         restricted_access: Acesso Restrito
     order:
-      status: 
+      status:
         requested: Requisitado
         waiting: Aguardando pagamento
         analysing: Em análise
@@ -15,13 +24,4 @@
         returned: Devolvido
         canceled: Cancelado
         debited: Debitado
-        temporary_retention: Retenção Temporaria
-    contract:
-      status:
-        available: Disponível
-        processing: Processando
-        paid: Pago
-        active: Ativo
-        defaulting: Inadimplente
-        suspended: Suspenso
-        inactive: Inativo
+        temporary_retention: Retenção Temporaria    

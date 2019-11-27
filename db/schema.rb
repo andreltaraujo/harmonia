@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2019_11_15_141321) do
     t.integer "representative_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price_cents", default: 154
+    t.integer "price_cents", default: 0
     t.index ["representative_id"], name: "index_contracts_on_representative_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
   end

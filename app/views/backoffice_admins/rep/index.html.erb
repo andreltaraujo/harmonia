@@ -12,20 +12,20 @@
             <tr>
               <th><%= @reps.human_attribute_name("id")%></th>
               <th><%= @reps.human_attribute_name("code")%></th>
-              <th><%= @reps.human_attribute_name("first_name")%></th>
-              <th><%= @reps.human_attribute_name("last_name")%></th>
+              <th><%= @reps.human_attribute_name("full_name")%></th>
               <th><%= @reps.human_attribute_name("cpf")%></th>
               <th><%= @reps.human_attribute_name("rg")%></th>
+              <th><%= @reps.human_attribute_name("contracts_count")%></th>
             </tr>
           </thead>
           <tfoot>
             <tr>
               <th><%= @reps.human_attribute_name("id")%></th>
               <th><%= @reps.human_attribute_name("code")%></th>
-              <th><%= @reps.human_attribute_name("first_name")%></th>
-              <th><%= @reps.human_attribute_name("last_name")%></th>
+              <th><%= @reps.human_attribute_name("full_name")%></th>
               <th><%= @reps.human_attribute_name("cpf")%></th>
               <th><%= @reps.human_attribute_name("rg")%></th>
+              <th><%= @reps.human_attribute_name("contracts_count")%></th>
             </tr>
           </tfoot>
           <tbody>
@@ -33,10 +33,10 @@
             <tr>
               <td><%= rep.id %></td>
               <td><%= rep.code %></td>
-              <td><%= rep.first_name %></td>
-              <td><%= rep.last_name %></td>
+              <td><%= rep.full_name %></td>
               <td><%= rep.cpf %></td>
-              <td><% rep.rg %></td>
+              <td><%= rep.rg %></td>
+              <td><%= rep.contracts_count %></td>
             </tr>
             <% end %>
             </tr>

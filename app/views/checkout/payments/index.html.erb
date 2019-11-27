@@ -1,0 +1,231 @@
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Confira suas informações e prossiga para pagamento para concluir a adesão</h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <%= form_with(url: "#", model: @user, local: true, class:"form-horizontal form-label-left") do |form| %>
+        <fieldset disabled>
+          <span class="section">Dados Pessoais</span>
+          <div class="item form-group">
+            <%= form.label :full_name, id:"full_name", class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <%= form.text_field :full_name, id:"full_name", class:"form-control col-md-7 col-xs-12"%>
+            </div>
+          </div>
+          <div class="item form-group">
+            <%= form.label :email, id:"email", class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <%= form.email_field :email, id:"email", class:"form-control col-md-7 col-xs-12"%>
+            </div>
+          </div>
+          <%= form.fields_for :user_profile do |profile_form| %>
+            <div class="item form-group">
+              <%= profile_form.label :cpf, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= profile_form.text_field :cpf, id:"cpf", class:"form-control col-md-7 col-xs-12"%>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= profile_form.label :rg, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= profile_form.text_field :rg, id:"rg", class:"form-control col-md-7 col-xs-12"%>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= profile_form.label :birthdate, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= profile_form.date_field :birthdate, id:"birthdate", class:"form-control col-md-7 col-xs-12"%>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= profile_form.label :mar_status, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= profile_form.text_field :mar_status, id:"mar_status", class:"form-control col-md-7 col-xs-12"%>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= profile_form.label :secretary, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= profile_form.text_field :secretary, id:"secretary", class:"form-control col-md-7 col-xs-12"%>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= profile_form.label :entity, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= profile_form.text_field :entity, id:"entity", class:"form-control col-md-7 col-xs-12"%>
+              </div>
+            </div>
+          <% end %>
+          <%= form.fields_for :home_address do |home_address_form| %>
+            <span class="section">Endereços</span>
+            <div class="item form-group">
+              <%= home_address_form.label :home_address, @user.home_address.model_name.human, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= home_address_form.label :street, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= home_address_form.text_field :street, id:"home_street", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= home_address_form.label :number, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= home_address_form.text_field :number, id:"home_number", class:"form-control col-md-7 col-xs-12"%>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= home_address_form.label :district, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= home_address_form.text_field :district, id:"home_district", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= home_address_form.label :city, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= home_address_form.text_field :city, id:"home_city", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= home_address_form.label :state, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= home_address_form.text_field :state, id:"home_state", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= home_address_form.label :cep, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= home_address_form.text_field :cep, id:"home_cep", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+          <% end %>
+          <%= form.fields_for :business_address do |business_address_form| %>
+            <div class="item form-group">
+              <%= business_address_form.label :business_address, @user.business_address.model_name.human, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= business_address_form.label :street, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= business_address_form.text_field :street, id:"business_street", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= business_address_form.label :number, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= business_address_form.text_field :number, id:"business_number", class:"form-control col-md-7 col-xs-12"%>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= business_address_form.label :district, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= business_address_form.text_field :district, id:"business_district", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= business_address_form.label :city, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= business_address_form.text_field :city, id:"business_city", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= business_address_form.label :state, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= business_address_form.text_field :state, id:"business_state", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= business_address_form.label :cep, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= business_address_form.text_field :cep, id:"business_cep", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+          <% end %>
+          <%= form.fields_for :bank_info do |bank_info_form| %>
+            <span class="section">Informações Bancárias</span>
+            <div class="item form-group">
+              <%= bank_info_form.label :bank_name, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= bank_info_form.text_field :bank_name, id:"bank_name", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= bank_info_form.label :bank_number, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= bank_info_form.text_field :bank_number, id:"bank_number", class:"form-control col-md-7 col-xs-12"%>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= bank_info_form.label :agency_number, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= bank_info_form.text_field :agency_number, id:"agency_number", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= bank_info_form.label :account_number, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= bank_info_form.text_field :account_number, id:"account_number", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= bank_info_form.label :debit_date, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= bank_info_form.date_field :debit_date, id:"debit_date", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+          <% end %>
+          <span class="section">Dependentes</span>
+          <%= form.fields_for :dependents do |dependent_form| %>
+            <div class="item form-group">
+              <%= dependent_form.label :name, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= dependent_form.text_field :name, id:"dependent_name", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= dependent_form.label :birthdate, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= dependent_form.date_field :birthdate, id:"birthdate", class:"form-control col-md-7 col-xs-12"%>
+              </div>
+            </div>
+            <div class="item form-group">
+              <%= dependent_form.label :kinship, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= dependent_form.text_field :kinship, id:"kinship", class:"form-control col-md-7 col-xs-12" %>
+              </div>
+            </div>
+          <% end %>
+          </fieldset>
+        <% end %>  
+        <div class="ln_solid"></div>
+
+        <div class="row no-print">
+          <%= form_tag(checkout_payments_path) do %>
+            <%= hidden_field_tag :contract_id, @user.contract.id %>
+              <div class="col-xs-12 col-md-offset-3">
+                <%= button_tag(type: "submit", class:"btn btn-success") do %>
+                  <i class="fa fa-credit-card" style="margin-right: 5px;"></i>
+                    <%= t('label.Proceed to Payment') %>
+                <% end %>
+            <% end %>
+            <%= link_to backoffice_users_profile_path, class:"btn btn-primary",
+             style:"margin-right: 5px;" do %><i class="fa fa-edit"></i>
+            <%= t('label.Edit') %><% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+            
+              

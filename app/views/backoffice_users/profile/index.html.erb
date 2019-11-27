@@ -2,10 +2,11 @@
   <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
       <div class="x_title">
-        <h2><%= @user.user_profile.model_name.human(count: 1) %> - <%= @user.contract.model_name.human(count: 1) %> Nº: 
-         <%= @user.contract.number %> - Status: <%= t(@user.contract.status) %></h2><small></small></h2>
+        <h2><%= @user.user_profile.model_name.human %></h2><small></small></h2>
         <ul class="nav navbar-right panel_toolbox">
-          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i> <%= @user.contract.model_name.human %> Nº: 
+         <%= @user.contract.number %> - Status: <%= t(@user.contract.status) %></a>
+          
           </li>
         </ul>
         <div class="clearfix"></div>
@@ -40,7 +41,7 @@
           </ul>
           <div class=" ">
             <% if @user.contract.available? %>
-              <%= link_to backoffice_users_welcome_index_path, class:"btn btn-success" do %>
+              <%= link_to checkout_payments_path, class:"btn btn-success" do %>
                 <i class="fa fa-edit m-right-xs"></i>
                 <%= t('label.Signup') %>
               <% end %>
@@ -75,36 +76,38 @@
                 <ul class="messages">
                   <li>
                     <div class="message_wrapper">
-                      <h4 class="heading">Nascimento</h4>
+                      <h4 class="heading"><%= translate_attribute(@users, "user_profile.birthdate") %></h4>
                       <blockquote class="message"><%= l(@user.user_profile.birthdate) %></blockquote>
                       <br />
                     </div>
                   </li>
                   <li>
                     <div class="message_wrapper">
-                      <h4 class="heading">CPF</h4>
+                      <h4 class="heading"><%= @users.human_attribute_name("user_profile.cpf") %></h4>
                       <blockquote class="message"><%= @user.user_profile.cpf %></blockquote>
                       <br />
                     </div>
                   </li>
                   <li>  
                     <div class="message_wrapper">
-                      <h4 class="heading">RG</h4>
+                      <h4 class="heading"><%= @users.human_attribute_name("user_profile.rg") %></h4>
                       <blockquote class="message"><%= @user.user_profile.rg %></blockquote>
                       <br />
                     </div>
                   </li>
                   <li>
                     <div class="message_wrapper">
-                      <h4 class="heading">Marital Status</h4>
+                      <h4 class="heading"><%= @users.human_attribute_name("user_profile.mar_status") %></h4>
                       <blockquote class="message"><%= @user.user_profile.mar_status %></blockquote>
                       <br />
                     </div>
                   </li>
                   <li>
                     <div class="message_wrapper">
-                      <h4 class="heading">Secretaria / Entidade</h4>
-                      <blockquote class="message"><%= @user.user_profile.secretary %> / <%= @user.user_profile.entity %></blockquote>
+                      <h4 class="heading"><%= @users.human_attribute_name("user_profile.secretary") %> / 
+                       <%= @users.human_attribute_name("user_profile.secretary") %></h4>
+                      <blockquote class="message"><%= @user.user_profile.secretary %> /
+                       <%= @user.user_profile.entity %></blockquote>
                       <br />
                     </div>
                   </li>
@@ -116,7 +119,7 @@
                 <ul class="messages">
                   <li>
                     <div class="message_wrapper">
-                      <h4 class="heading">Home Address</h4>
+                      <h4 class="heading"><%= @user.home_address.model_name.human %></h4>
                       <blockquote class="message">
                         <%= @user.home_address.street %>, <%= @user.home_address.number %> - 
                         <%= @user.home_address.district %> - <%= @user.home_address.city %> / 
@@ -125,14 +128,14 @@
                       <br />
                     </div>
                     <div class="message_wrapper">
-                      <h4 class="heading">Home/Mobile Phone</h4>
+                      <h4 class="heading"><%= @user.phones.human_attribute_name("phone_number") %></h4>
                       <blockquote class="message"><%= @user.phones.first.phone_number %></blockquote>
                       <br />
                     </div>
                   </li>
                   <li>
                     <div class="message_wrapper">
-                      <h4 class="heading">Business Address</h4>
+                      <h4 class="heading"><%= @user.business_address.model_name.human %></h4>
                       <blockquote class="message">
                         <%= @user.business_address.street %>, <%= @user.business_address.number %> - 
                         <%= @user.business_address.district %> - <%= @user.business_address.city %> / 
@@ -141,7 +144,7 @@
                       <br />
                     </div>
                     <div class="message_wrapper">
-                      <h4 class="heading">Business Phone</h4>
+                      <h4 class="heading"><%= @user.phones.human_attribute_name("phone_number") %></h4>
                       <blockquote class="message"><%= @user.phones.last.phone_number %></blockquote>
                       <br />
                     </div>
@@ -152,16 +155,28 @@
                 <ul class="messages">
                   <li>
                     <div class="message_wrapper">
-                      <h4 class="heading">Informações Bancárias</h4>
-                      <blockquote class="message">
-                        <%= @user.bank_info.bank_name %> - <%= @user.bank_info.bank_number %> - 
-                        <%= @user.bank_info.agency_number %> - <%= @user.bank_info.account_number %>
-                      </blockquote>
+                      <h4 class="heading"><%= @users.human_attribute_name("bank_info.bank_name") %></h4>
+                      <blockquote class="message"><%= @user.bank_info.bank_name %></blockquote>
                       <br />
                     </div>
                     <div class="message_wrapper">
-                      <h4 class="heading">Debit Date</h4>
-                      <blockquote class="message"><%= @user.bank_info.debit_date %></blockquote>
+                      <h4 class="heading"><%= @users.human_attribute_name("bank_info.bank_number") %></h4>
+                      <blockquote class="message"><%= @user.bank_info.bank_number %></blockquote>
+                      <br />
+                    </div>
+                    <div class="message_wrapper">
+                      <h4 class="heading"><%= @users.human_attribute_name("bank_info.agency_number") %></h4>
+                      <blockquote class="message"><%= @user.bank_info.agency_number %></blockquote>
+                      <br />
+                    </div>
+                    <div class="message_wrapper">
+                      <h4 class="heading"><%= @users.human_attribute_name("bank_info.account_number") %></h4>
+                      <blockquote class="message"><%= @user.bank_info.account_number %></blockquote>
+                      <br />
+                    </div>
+                    <div class="message_wrapper">
+                      <h4 class="heading"><%= @users.human_attribute_name("bank_info.debit_date") %></h4>
+                      <blockquote class="message"><%= l @user.bank_info.debit_date %></blockquote>
                       <br />
                     </div>
                   </li>
@@ -172,11 +187,10 @@
                 <table class="data table table-striped no-margin">
                   <thead>
                     <tr>
-                      <th>#</th>
-                      <th><%= @user.dependents.human_attribute_name("name")%></th>
-                      <th><%= @user.dependents.human_attribute_name("birthdate")%></th>
-                      <th class="hidden-phone">Age</th>
-                      <th><%= @user.dependents.human_attribute_name("kinship")%></th>
+                      <th><%= @user.dependents.human_attribute_name(:id)%></th>
+                      <th><%= @user.dependents.human_attribute_name(:name)%></th>
+                      <th><%= @user.dependents.human_attribute_name(:birthdate)%></th>
+                      <th><%= @user.dependents.human_attribute_name(:kinship)%></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -185,7 +199,6 @@
                       <td><%= depend.id %></td>
                       <td><%= depend.name %></td>
                       <td><%= l(depend.birthdate) %></td>
-                      <td class="hidden-phone">18</td>
                       <td><%= depend.kinship %></td>
                     </tr>
                     <% end %>

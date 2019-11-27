@@ -1,1 +1,149 @@
-<%= puts >>>> "#{transaction}" %>
+<div class="clearfix"></div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><small></small></h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link">Contrato Nº <%= @user.contract.number %></a></li>
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <section class="content invoice">
+            <!-- title row -->
+            <div class="row">
+              <div class="col-xs-12 invoice-header">
+                <h1>
+                  <i><%= image_tag('logo.png', size:"62x35") %></i> <%= t('label.Invoice') %>
+                  <small class="pull-right"><%= t('label.Date')%>:<%= l Date.today %></small>
+                </h1>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row invoice-info">
+              <div class="col-sm-4 invoice-col">
+                De
+                <address>
+                  <strong>Harmonia Administradora de Benefícios S/S LTDA.</strong>
+                  <br>R. Frei Antônio de Pádua, 1020 - Guanabara
+                  <br>Campinas / SP - CEP: 13.073-330
+                  <br>Phone: (11) 94969-0036
+                  <br>Email: andre@abraspesp.com.br
+                </address>
+              </div>
+              <!-- /.col -->
+              <div class="col-sm-4 invoice-col">
+                To
+                <address>
+                  <strong><%= @user.full_name %></strong>
+                  <br>R. <%= @user.home_address.street %>, <%= @user.home_address.number%>
+                  -  <%= @user.home_address.district %>
+                  <br><%= @user.home_address.city %> / <%= @user.home_address.state %>
+                  - <%= @user.home_address.cep %>
+                  <br>Phone: <%= @user.phones.first.phone_number%>
+                  <br>Email: <%= @user.email %>
+                </address>
+              </div>
+              <!-- /.col -->
+              <div class="col-sm-4 invoice-col">
+                <b><%= t('label.Invoice') %> #007612</b>
+                <br>
+                <br>
+                <b>Order ID:</b><#% @user.order.id %>
+                <br>
+                <b>Payment Due:</b> 2/22/2014
+                <br>
+                <b>Account:</b> 968-34567
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- Table row -->
+            <div class="row">
+              <div class="col-xs-12 table">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th><%= t('label.Qty') %></th>
+                      <th><%= t('label.Product') %></th>
+                      <th>Nº <%= t('label.Serial') %></th>
+                      <th style="width: 59%"><%= t('label.Description') %></th>
+                      <th>Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Adesão</td>
+                      <td><%= @user.contract.number %></td>
+                      <td>Taxa Administrativa</td>
+                      <td>R$ 95,00</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Mensalidade</td>
+                      <td><%= @user.contract.number %></td>
+                      <td>Primeira Mensalidade</td>
+                      <td>R$ 59,00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+              <!-- accepted payments column -->
+              <div class="col-xs-6">
+                <p class="lead"><%= t('label.Payment Methods') %></p>
+                <%= image_tag 'visa.png' %>
+                <%= image_tag 'mastercard.png' %>
+                <%= image_tag 'american.png' %>
+                <%= image_tag 'paypal.png' %>
+                <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                  Aceitamos estas formas de pagamento.
+                </p>
+              </div>
+              <!-- /.col -->
+              <div class="col-xs-6">
+                <p class="lead"><%= t('label.Amount due') %>, <%= l Date.today %></p>
+                <div class="table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <th style="width:50%">Subtotal:</th>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th>Tax (4,98%)</th>
+                        <td>R$ 7.70</td>
+                      </tr>
+                      <tr>
+                        <th>Total:</th>
+                        <td><%= @user.contract.price %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- this row will not appear when printing -->
+            <div class="row no-print">
+              <div class=" ">
+                <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                <button class="btn btn-primary" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+                  <%= link_to "#{@user.contract.status}", backoffice_users_profile_index_path, class:"btn btn-primary" %>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>

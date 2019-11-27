@@ -17,8 +17,8 @@ class BackofficeUsers::WelcomeController < BackofficeUsersController
     def update
       if @user.update(params_user)
         bypass_sign_in(@user)
-        redirect_to backoffice_users_welcome_index_path, 
-        notice: "Seus dados foram salvos! Efetue o pagamento para concluir a adesão..."
+        redirect_to checkout_payments_path,
+        notice: "Seus dados foram salvos com sucesso! Confirme as informações e prossiga para concluir a adesão..."
       else
         render :edit, notice: "sometinhg wrong!"
       end

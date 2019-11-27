@@ -1,9 +1,11 @@
-<%= current_user.contract.inspect %> - <%= controller_name %> - <%= action_name %>
+<%= controller_name %> - <%= action_name %>
 <div class="col-md-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title">
-      <h2><%= action_message %> <%= @user.model_name.human %><small></small></h2>
+      <h2><%= action_message %><small></small></h2>
         <ul class="nav navbar-right panel_toolbox">
+          
+          <li><a class="collapse-link"><%= @user.contract.model_name.human%> Nº: <%= @user.contract.number %></a></li>
           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li> 
         </ul>
       <div class="clearfix"></div>
@@ -184,7 +186,7 @@
           <%= form.fields_for :dependents do |dependent| %>
             <%= render partial: "dependent_fields", locals: { f: dependent } %>
           <% end %>
-          <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+          <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-2">
             <%= link_to_add_association 'Incluir Dependentes', form, :dependents, class:"btn btn-success btn-xs" %>
           </div>
         </div>
@@ -194,7 +196,7 @@
           <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-5">
             <%= link_to 'Cancel', backoffice_users_profile_index_path, class:"btn btn-primary" %>
             <button class="btn btn-primary" type="reset">Reset</button>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <%= form.submit t('label.Submit'), class:"btn btn-success" %>
           </div>
         </div>
       <% end %>

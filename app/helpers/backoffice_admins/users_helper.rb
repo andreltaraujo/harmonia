@@ -1,0 +1,2 @@
+module BackofficeAdmins::UsersHelper
+end

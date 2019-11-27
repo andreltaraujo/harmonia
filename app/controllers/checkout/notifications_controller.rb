@@ -2,9 +2,10 @@ class Checkout::NotificationsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
 
   def create
+    puts ">>>> Chegou aqui <<<<"
     transaction = PagSeguro::Transaction.find_by_notification_code(params[:notificationCode])
+    #puts ">>>> #{transaction}"
     raise transaction.errors.join("\n")
-    redirect_to checkout_notifications_path
     
     if transaction.errors.empty?
       status_code = transaction.status.id.to_i
@@ -19,7 +20,7 @@ class Checkout::NotificationsController < ApplicationController
         contract.paid!
       end
     end
-
-    render nothing: true, status: 200
+    
+    render index: true, status: 200
   end
 end

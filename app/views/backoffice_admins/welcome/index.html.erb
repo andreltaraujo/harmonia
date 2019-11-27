@@ -22,7 +22,7 @@
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
 												<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-												Total</div>
+												<%= link_to "TOTAL", backoffice_admins_contracts_index_path %></div>
 												<div class="h5 mb-0 font-weight-bold text-gray-800"><%= @contracts.size %></div>
 											</div>
 											<div class="col-auto">
@@ -201,7 +201,7 @@
 											<div class="col mr-2">
 												<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 												Total</div>
-												<div class="h5 mb-0 font-weight-bold text-gray-800"><%= @contracts.size %></div>
+												<div class="h5 mb-0 font-weight-bold text-gray-800"><%= @admins.size %></div>
 											</div>
 											<div class="col-auto">
 												<i class="fas fa-file-contract fa-2x text-gray-300"></i>
@@ -286,7 +286,7 @@
 											<div class="col mr-2">
 												<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 												Total</div>
-												<div class="h5 mb-0 font-weight-bold text-gray-800"><%= @contracts.size %></div>
+												<div class="h5 mb-0 font-weight-bold text-gray-800"><%= @reps.size %></div>
 											</div>
 											<div class="col-auto">
 												<i class="fas fa-file-contract fa-2x text-gray-300"></i>

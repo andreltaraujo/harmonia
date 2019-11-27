@@ -3,7 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
     def after_sign_up_path_for(resource)
-      backoffice_users_welcome_path
+      backoffice_users_profile_path
     end
 
     def set_params

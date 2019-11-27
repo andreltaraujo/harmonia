@@ -3,6 +3,6 @@
     registered: "%{model} Cadastradas" 
   headers:
     registered: "%{model} Cadastrados"
-    editing: Editando
-    registering: Cadastrando
+    editing: Editando %{model}
+    registering: Cadastrando %{model}
     welcome: Bem-vindo

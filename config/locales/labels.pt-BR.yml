@@ -9,8 +9,10 @@
     Profile: Perfil
     UserDashboard: Painel Usuário
     Dashboard: Painel Geral
-    DashboardAdm: Painel Administradores
-    DashboardRep: Painel Representantes
+    DashboardAdms: Painel Administradores
+    DashboardReps: Painel Representantes
+    DashboardContracts: Painel Contratos
+    DashboardUsers: Painel Usuários
     Search: Pesquisar
     Answer: Responder
     Filter: Filtrar
@@ -29,6 +31,4 @@
     Description: Descrição
     Payment Methods: Métodos de Pagamento
     Amount due: Valor devido
-    Submit Payment: Efetuar Pagamento
-
-
+    Proceed to Payment: Prosseguir para Pagamento

@@ -18,7 +18,14 @@ class Contract < ApplicationRecord
   def self.set_number(event)
     number = Contract.last.number.to_i
     new_number = number += 1
-    new_contract = Contract.new(event: event, number: new_number, contract_date: Date.today, user: User.last)
+    new_contract = Contract.new(
+      event: event,
+      number: new_number,
+      contract_date: Date.today,
+      user: User.last, 
+      price: "154,00",
+      representative: Representative.all.sample
+    )
     new_contract.save
   end
 end

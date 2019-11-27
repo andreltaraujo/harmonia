@@ -1,5 +1,9 @@
 class Checkout::PaymentsController < BackofficeUsersController
   
+  def index
+    @user = User.find(current_user.id)
+  end
+  
   def create
     contract = Contract.find(params[:contract_id])
 

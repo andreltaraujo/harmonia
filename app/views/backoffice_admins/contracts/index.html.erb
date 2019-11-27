@@ -11,8 +11,8 @@
           <thead>
             <tr>
               <th><%= @contracts.human_attribute_name("id")%></th>
-              <th><%= @contracts.human_attribute_name("user")%></th>
               <th><%= @contracts.human_attribute_name("number")%></th>
+              <th><%= @contracts.human_attribute_name("user")%></th>
               <th><%= @contracts.human_attribute_name("contract_date")%></th>
               <th><%= @contracts.human_attribute_name("status")%></th>
               <th><%= @contracts.human_attribute_name("representative")%></th>
@@ -20,23 +20,24 @@
           </thead>
           <tfoot>
             <tr>
-              <th><%= @contracts.human_attribute_name("id")%></th>
-              <th><%= @contracts.human_attribute_name("user")%></th>
-              <th><%= @contracts.human_attribute_name("number")%></th>
-              <th><%= @contracts.human_attribute_name("contract_date")%></th>
-              <th><%= @contracts.human_attribute_name("status")%></th>
-              <th><%= @contracts.human_attribute_name("representative")%></th>
+              <th><%= @contracts.human_attribute_name("id") %></th>
+              <th><%= @contracts.human_attribute_name("number") %></th>
+              <th><%= @contracts.human_attribute_name("user") %></th>
+              <th><%= @contracts.human_attribute_name("contract_date") %></th>
+              <th><%= @contracts.human_attribute_name("status") %></th>
+              <th><%= @contracts.human_attribute_name("representative") %></th>
             </tr>
           </tfoot>
           <tbody>
             <% @contracts.each do |contract| %>
             <tr>
               <td><%= contract.id %></td>
-              <td><%= contract.user.full_name %></td>
               <td><%= contract.number %></td>
+              <td><%= contract.user.full_name %></td>
               <td><%= contract.contract_date %></td>
               <td><%= contract.status %></td>
-              <td><%= contract.representative %></td>
+              <td><%= contract.representative.code %></td>
+              <%#= humanized_money_with_symbol(contract.price) %>
             </tr>
             <% end %>
             </tr>
